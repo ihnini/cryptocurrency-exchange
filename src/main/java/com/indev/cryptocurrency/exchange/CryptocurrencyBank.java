@@ -5,20 +5,29 @@ import java.util.ArrayList;
 public class CryptocurrencyBank {
 
     private ArrayList<String> supportedCryptoCurrency;
+    private ArrayList<Customer> customers;
+
 
     public CryptocurrencyBank() {
         supportedCryptoCurrency = new ArrayList<>();
+        customers = new ArrayList<>();
     }
 
     public void addSupportedCryptoCurrency(String cryptoCurrency) {
         supportedCryptoCurrency.add(cryptoCurrency);
     }
 
-    public int requestTransaction(Customer buyerCustomer, int i, String bitcoin) {
+    public int requestTransaction(Customer buyerCustomer, int i, String cryptoCurrency) {
+        for (Customer customer:customers) {
+            if(customer.getCryptoCurrency().equals(cryptoCurrency) && customer.getQuantity()<=i){
+                return i;
+            }
+        }
         return 0;
     }
 
     public void addSeller(Customer sellerCustomer) {
+        this.customers.add(sellerCustomer);
     }
 
     public ArrayList<String> getSupportedCryptoCurrency() {

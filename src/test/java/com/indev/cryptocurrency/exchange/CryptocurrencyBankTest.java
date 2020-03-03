@@ -54,7 +54,7 @@ public class CryptocurrencyBankTest {
     }
 
     /*
-        A customer can request to buy a given quantity of a cryptocurrency, if nok seller are selling it, the transaction will not occur
+        A customer can request to buy a given quantity of a cryptocurrency, if no seller are selling it, the transaction will not occur
      */
     @Test
     public void shouldNotBuyWhenNoSeller() {

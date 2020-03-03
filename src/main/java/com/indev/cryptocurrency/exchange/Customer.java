@@ -22,8 +22,33 @@ public class Customer {
         return this;
     }
 
+    public String getCryptoCurrency() {
+        return cryptoCurrency;
+    }
+
+    public void setCryptoCurrency(String cryptoCurrency) {
+        this.cryptoCurrency = cryptoCurrency;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
     @Override
     public String toString() {
-        return ""+balance+":$,"+this.quantity+":"+this.cryptoCurrency;
+        if(cryptoCurrency==null) return  balance+":$";
+        return balance+":$,"+this.quantity+":"+this.cryptoCurrency;
     }
 }
