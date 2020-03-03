@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class CryptocurrencyBank {
     Set<CryptoCurrency> cryptoCurrencies=new HashSet<>();
-    Set<Customer> sellers=new HashSet<>();
+    List<Customer> sellers=new ArrayList<>();
 
     public void addSupportedCryptoCurrency(String bitcoin) {
         CryptoCurrency cryptoCurrency=new CryptoCurrency();
@@ -17,16 +17,24 @@ public class CryptocurrencyBank {
 
     public int requestTransaction(Customer buyerCustomer, int i, String bitcoin) {
         boolean SellerExist=false;
-        for (Customer seller:sellers) {
-            if (seller.getCryptoCurrency().getName().equals(bitcoin) && seller.getCryptoCurrency().getQuantite() >= i) {
+        int sellerIndex=0;
+        while (!SellerExist && sellerIndex<this.sellers.size()) {
+            if (this.sellers.get(sellerIndex).getCryptoCurrency().getName().equals(bitcoin)
+                   && sellers.get(sellerIndex).getCryptoCurrency().getQuantite() >= i) {
                 SellerExist = true;
                 break;
             }
+            sellerIndex++;
         }
-        if (SellerExist)
-            return i;
-        else
+        if (!SellerExist)
             return 0;
+        else {
+            sellers.get(sellerIndex).setCryptoCurrency(new CryptoCurrency(bitcoin,sellers.get(sellerIndex).getCryptoCurrency().getQuantite()-i));
+            sellers.get(sellerIndex).setBalance(sellers.get(sellerIndex).getBalance()+i);
+            buyerCustomer.setCryptoCurrency(new CryptoCurrency(bitcoin,i));
+            buyerCustomer.setBalance(buyerCustomer.getBalance()-i);
+            return i;
+        }
     }
 
     public void addSeller(Customer sellerCustomer) {

@@ -83,7 +83,7 @@ public class CryptocurrencyBankTest {
         assertThat(buyerCustomer.toString(), equalTo("97:$,3:Bitcoin"));
     }
 
-    /*
+    /*  
         A customer can request to buy a given quantity of a cryptocurrency, when the sellers are not selling the wanted cryptocurrency, the transaction will not occur
      */
     @Test
@@ -116,6 +116,7 @@ public class CryptocurrencyBankTest {
         Customer firstBuyer = new Customer().withBalance(100);
         Customer secondBuyer = new Customer().withBalance(100);
         Customer thirdBuyer = new Customer().withBalance(100);
+
         int firstBoughtQuantity = cryptocurrencyBank.requestTransaction(firstBuyer, 3, "Bitcoin");
         int secondBoughtQuantity = cryptocurrencyBank.requestTransaction(secondBuyer, 3, "Bitcoin");
         int thirdBoughtQuantity = cryptocurrencyBank.requestTransaction(thirdBuyer, 3, "Bitcoin");

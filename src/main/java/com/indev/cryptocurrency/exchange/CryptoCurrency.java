@@ -7,6 +7,11 @@ public class CryptoCurrency {
     public CryptoCurrency() {
     }
 
+    public CryptoCurrency(String name, int quantite) {
+        this.name = name;
+        this.quantite = quantite;
+    }
+
     public String getName() {
         return name;
     }
