@@ -13,58 +13,57 @@ public class CryptocurrencyBank {
     public void addSupportedCryptoCurrency(String bitcoin) {
     }
     public int requestTransaction(Customer buyerCustomer, int i, String bitcoin) {
-        /*
-
-        Customer buyerCustomer = new Customer().withBalance(100);
-        int boughtQuantity = cryptocurrencyBank.requestTransaction(buyerCustomer, 3, "Bitcoin");
-
-         */
 
         if(customers==null){
             System.out.println("BuyerCustomer does not exist");
             return 0;
         }
 
-        /*Boolean existCrypto=false;
-
-        for(Customer c : customers.keySet()){
-            if(c.getWallet().getCrypto().toString().equals(bitcoin)) {
-                existCrypto = true;
-                break;
-            }
-        }*/
-        /*int cnt=0;
-        while(existCrypto=false && cnt<customers.size()){
-            if(c.getWallet().getCrypto().toString().equals(bitcoin))
-                existCrypto=true;
-        }*/
-        /*if(existCrypto==false)
-            return 0;
-        */
         for(ICrypto c : cryptos){
             if(!(c instanceof Bitcoin && bitcoin=="Bitcoin")){
                 System.out.println("Crypto does not exist");
                 return 0;
             }
         }
-        /*if(!cryptos.contains(CryptoFactory.getCryptocurrency(bitcoin))){
-            System.out.println("Crypto does not exist");
-            return 0;
-        } else {*/
+
             Customer seller;
             for (Customer c : customers.keySet()) {
                 if (c.getWallet().getCrypto().toString().equals(bitcoin) && c.getWallet().getCount() >= i) {
                     //seller = c;
-                    if(buyerCustomer.getBalance()<calculPrice(customers.get(c)+1)*1){
+                    if(buyerCustomer.getBalance()<calculPrice(customers.get(c)+1)*i){
                         System.out.println("we can't buy with that balance");
-                        return 0;}
+                        return 0;
+                    }
+
                     customers.replace(c,customers.get(c)+1);
-                    buyerCustomer.setBalance(buyerCustomer.getBalance()-customers.get(c)*i);
-                    c.setBalance(c.getBalance()+customers.get(c)*i);
+
+                    //Counting the price of the cryptocurrency
+                    int countPrice;
+                    System.out.println("customer numbre : "+ customers.get(c));
+                    if(customers.get(c)==1)
+                        countPrice=1;
+                    else countPrice=customers.get(c)*customers.get(c)-1;
+                    System.out.println("price : "+ countPrice);
+                    //--------------------
+                    //Reducing the balance of the buyer
+                    buyerCustomer.setBalance(buyerCustomer.getBalance()-countPrice*i);
+
+                    //Changing the balance of the seller by adding countPrice multiplying by i
+                    c.setBalance(c.getBalance()+countPrice*i);
+
+                    //Reducing the seller's crypto number
                     c.getWallet().setCount(c.getWallet().getCount()-i);
+
+                    //Creating a new wallet for the buyer and adding our cryptocurrency and the number
                     Wallet buyerWallet = new Wallet(CryptoFactory.getCryptocurrency(bitcoin),i);
+
                     buyerCustomer.setWallet(buyerWallet);
+                    System.out.println("buyer:"+buyerCustomer.toString());
+                    System.out.println("Seller"+c.toString());
+
                     return i;
+
+
 
                 }
             }

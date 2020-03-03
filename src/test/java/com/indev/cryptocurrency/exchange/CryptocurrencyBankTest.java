@@ -124,10 +124,11 @@ public class CryptocurrencyBankTest {
         assertThat(secondBoughtQuantity, equalTo(3));
         assertThat(thirdBoughtQuantity, equalTo(3));
 
-        assertThat(sellerCustomer.toString(), equalTo("27:$,1:Bitcoin"));
+        //Some issues fixed
+        assertThat(sellerCustomer.toString(), equalTo("36:$,1:Bitcoin"));
 
         assertThat(firstBuyer.toString(), equalTo("97:$,3:Bitcoin"));
-        assertThat(secondBuyer.toString(), equalTo("94:$,3:Bitcoin"));
-        assertThat(thirdBuyer.toString(), equalTo("82:$,3:Bitcoin"));
+        assertThat(secondBuyer.toString(), equalTo("91:$,3:Bitcoin"));
+        assertThat(thirdBuyer.toString(), equalTo("76:$,3:Bitcoin"));
     }
 }
