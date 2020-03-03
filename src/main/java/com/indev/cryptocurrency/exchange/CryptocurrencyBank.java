@@ -6,6 +6,8 @@ public class CryptocurrencyBank {
     }
 
     public int requestTransaction(Customer buyerCustomer, int i, String bitcoin) {
+
+
         return 0;
     }
 
