@@ -25,10 +25,7 @@ public class Customer {
     }
 
     public Customer withCryptocurrency(String bitcoin, int i) {
-        CryptoCurrency cryptoc=new CryptoCurrency();
-        cryptoc.setName(bitcoin);
-        cryptoc.setQuantite(i);
-        this.setCryptoCurrency(cryptoc);
+        this.setCryptoCurrency(new CryptoCurrency(bitcoin,i));
         return this;
     }
 

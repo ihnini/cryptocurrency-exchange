@@ -83,7 +83,7 @@ public class CryptocurrencyBankTest {
         assertThat(buyerCustomer.toString(), equalTo("97:$,3:Bitcoin"));
     }
 
-    /*  
+    /*  shouldBuyCryptocurrency shouldNotBuyCryptocurrencyWhenNotFound tests
         A customer can request to buy a given quantity of a cryptocurrency, when the sellers are not selling the wanted cryptocurrency, the transaction will not occur
      */
     @Test
