@@ -23,8 +23,12 @@ public class Customer {
     public void setBalance(int balance) {
         this.balance = balance;
     }
+
     public Customer withCryptocurrency(String bitcoin, int i) {
-        this.setCryptoCurrency(new CryptoCurrency(bitcoin,i));
+        CryptoCurrency cryptoc=new CryptoCurrency();
+        cryptoc.setName(bitcoin);
+        cryptoc.setQuantite(i);
+        this.setCryptoCurrency(cryptoc);
         return this;
     }
 
@@ -35,6 +39,13 @@ public class Customer {
 
     @Override
     public String toString() {
-        return this.balance+":$,"+this.cryptoCurrency.getQuantite()+":"+cryptoCurrency.getName();
+        return this.balance+":$"+this.displayCurrencyInfo();
+    }
+
+    private String displayCurrencyInfo() {
+        if(this.cryptoCurrency==null)
+            return "";
+        else
+            return ","+this.cryptoCurrency.toString();
     }
 }

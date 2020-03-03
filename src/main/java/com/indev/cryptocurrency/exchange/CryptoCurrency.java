@@ -4,11 +4,6 @@ public class CryptoCurrency {
     private String name;
     private int quantite;
 
-    public CryptoCurrency(String name, int quantite) {
-        this.name = name;
-        this.quantite = quantite;
-    }
-
     public CryptoCurrency() {
     }
 
@@ -26,5 +21,10 @@ public class CryptoCurrency {
 
     public void setQuantite(int quantite) {
         this.quantite = quantite;
+    }
+
+    @Override
+    public String toString() {
+        return this.getQuantite()+":"+this.getName();
     }
 }
