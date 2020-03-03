@@ -11,19 +11,25 @@ public class CryptocurrencyBank {
     public Map<Customer,Integer> customers = new HashMap<>();
 
     public void addSupportedCryptoCurrency(String bitcoin) {
+        System.out.println("ths crypto is: "+CryptoFactory.getCryptocurrency(bitcoin).toString());
+        cryptos.add(CryptoFactory.getCryptocurrency(bitcoin));
     }
     public int requestTransaction(Customer buyerCustomer, int i, String bitcoin) {
 
-        if(customers==null){
-            System.out.println("BuyerCustomer does not exist");
+        if(customers.size()==0){
+            System.out.println("No seller exist");
             return 0;
         }
 
         for(ICrypto c : cryptos){
-            if(!(c instanceof Bitcoin && bitcoin=="Bitcoin")){
-                System.out.println("Crypto does not exist");
-                return 0;
-            }
+            if(c instanceof Bitcoin && bitcoin=="Bitcoin")
+                break;
+
+            if(c instanceof Ethereum && bitcoin=="Ethereum")
+                break;
+
+            System.out.println("Crypto does not exist");
+            return 0;
         }
 
             Customer seller;
@@ -70,15 +76,13 @@ public class CryptocurrencyBank {
 
 
 
-        return 1;
+        return i;
 
     }
 
     public void addSeller(Customer sellerCustomer) {
         customers.put(sellerCustomer,0);
         //cryptos.add(sellerCustomer.getWallet().getCrypto());
-        cryptos.add(sellerCustomer.getWallet().getCrypto());
-        System.out.println("Seller crypto :: "+sellerCustomer.getWallet().getCrypto().toString());
         System.out.println(customers);
     }
 
