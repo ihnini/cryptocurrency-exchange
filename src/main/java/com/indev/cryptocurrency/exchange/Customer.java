@@ -2,13 +2,11 @@ package com.indev.cryptocurrency.exchange;
 
 public class Customer {
     private String currency;
-    private int dollard;
     private int quentity;
+    private int balance;
 
-    public Customer(String currency, int quentity) {
-        this.currency = currency;
-        this.quentity = quentity;
-    }
+
+
     public Customer() {
     }
 
@@ -28,25 +26,31 @@ public class Customer {
         this.quentity = quentity;
     }
 
-    public void setDollard(int dollard) {
-        this.dollard = dollard;
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 
-    public int getDollard() {
-        return dollard;
+    public int getBalance() {
+        return this.balance;
     }
 
     @Override
     public String toString() {
-        return this.getDollard()+":$,"+ this.getQuentity()+":"+this.getCurrency();
+        if(this.getCurrency() == null) {
+            return this.getBalance()+":$";
+
+        }
+        return this.balance+":$,"+ this.getQuentity()+":"+this.getCurrency();
     }
 
     public Customer withCryptocurrency(String bitcoin, int i) {
-        return new Customer(bitcoin,i);
+        this.quentity = i;
+        this.currency = bitcoin;
+        return this;
     }
 
     public Customer withBalance(int i) {
-        this.setDollard(i);
+        this.balance = i ;
         return this;
     }
 }
