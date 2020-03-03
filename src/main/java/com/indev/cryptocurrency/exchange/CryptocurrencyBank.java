@@ -19,7 +19,14 @@ public class CryptocurrencyBank {
 
     public int requestTransaction(Customer buyerCustomer, int i, String cryptoCurrency) {
         for (Customer customer:customers) {
-            if(customer.getCryptoCurrency().equals(cryptoCurrency) && customer.getQuantity()<=i){
+
+            if(customer.getCryptoCurrency().equals(cryptoCurrency) && customer.getQuantity()>=i){
+                customer.setBalance(customer.getBalance()+i);
+                customer.setQuantity(customer.getQuantity()-i);
+
+                buyerCustomer.setCryptoCurrency(cryptoCurrency);
+                buyerCustomer.setQuantity(buyerCustomer.getQuantity()+i);
+                buyerCustomer.setBalance(buyerCustomer.getBalance()-i);
                 return i;
             }
         }
