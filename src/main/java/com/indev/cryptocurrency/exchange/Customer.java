@@ -27,6 +27,7 @@ public class Customer {
     }
 
     public Customer withBalance(int i) {
-        return null;
+        balance = i;
+        return this;
     }
 }
