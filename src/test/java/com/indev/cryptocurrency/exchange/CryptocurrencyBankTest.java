@@ -77,7 +77,7 @@ public class CryptocurrencyBankTest {
 
         Customer buyerCustomer = new Customer().withBalance(100);
         int boughtQuantity = cryptocurrencyBank.requestTransaction(buyerCustomer, 3, "Bitcoin");
-
+        //assertThat(buyerCustomer.toString(), equalTo("100:$"));
         assertThat(boughtQuantity, equalTo(3));
         assertThat(sellerCustomer.toString(), equalTo("3:$,7:Bitcoin"));
         assertThat(buyerCustomer.toString(), equalTo("97:$,3:Bitcoin"));
