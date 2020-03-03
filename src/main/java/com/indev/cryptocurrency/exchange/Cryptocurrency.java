@@ -2,14 +2,14 @@ package com.indev.cryptocurrency.exchange;
 
 public class Cryptocurrency {
     private String type;
-    private int price;
+    private int qte;
 
     public Cryptocurrency() {
     }
 
-    public Cryptocurrency(String type, int price) {
+    public Cryptocurrency(String type, int qte) {
         this.type = type;
-        this.price = price;
+        this.qte = qte;
     }
 
     public String getType() {
@@ -20,11 +20,11 @@ public class Cryptocurrency {
         this.type = type;
     }
 
-    public int getPrice() {
-        return price;
+    public int getQte() {
+        return qte;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setQte(int qte) {
+        this.qte = qte;
     }
 }

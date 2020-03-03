@@ -14,8 +14,26 @@ public class Customer {
         return this;
     }
 
-    @Override
-    public String toString() {
-        return balance+":$,"+cryptocurrency.getPrice()+":"+cryptocurrency.getType();
+    public Cryptocurrency getCryptocurrency() {
+        return cryptocurrency;
     }
+
+    public void setCryptocurrency(Cryptocurrency cryptocurrency) {
+        this.cryptocurrency = cryptocurrency;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    public String toString() {
+        String s =  balance+":$";
+        if(getCryptocurrency()!=null) s+=","+getCryptocurrency().getQte()+":"+getCryptocurrency().getType();
+        return s;
+    }
+
 }
