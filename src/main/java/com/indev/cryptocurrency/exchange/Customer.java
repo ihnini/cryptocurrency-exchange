@@ -49,4 +49,5 @@ public class Customer {
 		if(!wallet.getCryptoCurency().isBlank()) sb.append(",").append(wallet.getCryptoCurencyCount()).append(":").append(wallet.getCryptoCurency());
 		return sb.toString();
 	}
+
 }
