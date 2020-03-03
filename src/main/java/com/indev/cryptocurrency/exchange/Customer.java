@@ -6,7 +6,7 @@ public class Customer {
 
     private String cryptoCurrency;
     private int quantity;
-
+    private int balance;
 
     public Customer() {
     }
@@ -18,11 +18,12 @@ public class Customer {
     }
 
     public Customer withBalance(int i) {
-        return null;
+        this.balance=i;
+        return this;
     }
 
     @Override
     public String toString() {
-        return "0:$,"+this.quantity+":"+this.cryptoCurrency;
+        return ""+balance+":$,"+this.quantity+":"+this.cryptoCurrency;
     }
 }
