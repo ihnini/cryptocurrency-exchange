@@ -35,7 +35,11 @@ public class Customer {
 
     @Override
     public String toString() {
-        return getBalance() + ":$," + getWallet() + ":" + getCryptocurrency();
+        StringBuilder customerInfo = new StringBuilder();
+        customerInfo.append(getBalance()).append(":$");
+        if (getWallet() != 0)
+            customerInfo.append(",").append(getWallet()).append(":").append(getCryptocurrency());
+        return customerInfo.toString();
     }
 
     public Customer withCryptocurrency(String bitcoin, int i) {
@@ -45,7 +49,8 @@ public class Customer {
     }
 
     public Customer withBalance(int i) {
-        return null;
+        setBalance(i);
+        return this;
     }
 
 
