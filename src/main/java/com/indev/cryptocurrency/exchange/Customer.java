@@ -6,7 +6,7 @@ public class Customer {
     private int balance =0;
 
     public Customer() {
-        wallet=new Wallet();
+        //wallet=new Wallet();
     }
 
     public Customer(Wallet wallet, int balance) {
@@ -16,10 +16,15 @@ public class Customer {
 
     @Override
     public String toString() {
-        return balance+":$,"+wallet.getCount()+":"+wallet.getCrypto().toString();
+        String output = balance+":$";
+        if(wallet!=null)
+            output+=","+wallet.getCount()+":"+wallet.getCrypto().toString();
+        //return balance+":$,"+wallet.getCount()+":"+wallet.getCrypto().toString();
+        return output;
     }
 
     public Customer withCryptocurrency(String bitcoin, int i) {
+        wallet=new Wallet();
         wallet.setCrypto(CryptoFactory.getCryptocurrency(bitcoin));
         wallet.setCount(i);
         //return new Customer(new Wallet(CryptoFactory.getCryptocurrency(bitcoin),i),0);
@@ -29,5 +34,21 @@ public class Customer {
     public Customer withBalance(int i) {
         balance = i;
         return this;
+    }
+
+    public Wallet getWallet() {
+        return wallet;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 }
