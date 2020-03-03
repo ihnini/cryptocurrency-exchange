@@ -5,7 +5,7 @@ public class Customer {
     int balance;
 
     public Customer withCryptocurrency(String bitcoin, int i) {
-        this.cryptocurrency = new Cryptocurrency(bitcoin,i);
+        this.cryptocurrency = new Cryptocurrency(bitcoin, i);
         return this;
     }
 
@@ -31,9 +31,10 @@ public class Customer {
     }
 
     public String toString() {
-        String s =  balance+":$";
-        if(getCryptocurrency()!=null) s+=","+getCryptocurrency().getQte()+":"+getCryptocurrency().getType();
+        String s = balance + ":$";
+        if (getCryptocurrency() != null) {
+            s += "," + getCryptocurrency().getQte() + ":" + getCryptocurrency().getType();
+        }
         return s;
     }
-
 }

@@ -8,6 +8,7 @@ public class Cryptocurrency {
     }
 
     public Cryptocurrency(String type, int qte) {
+
         this.type = type;
         this.qte = qte;
     }
