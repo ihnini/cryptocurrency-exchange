@@ -1,9 +1,9 @@
 package com.indev.cryptocurrency.exchange;
 
 public class WalletImpl implements Wallet {
-	private String cryptoCurency="";
-	private int cryptoCurencyCount=0;
-	private int balance=0;
+	private String cryptoCurency;
+	private int cryptoCurencyCount;
+	private int balance;
 	
 	// Getters and setters
     

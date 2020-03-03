@@ -40,14 +40,39 @@ public class Customer {
 		wallet.setCryptoCurencyCount(cryptoCurencyCount);
 	}
 	
+	// helper functions
+	
+	public boolean hasGivenQuantityOfCurency(int quantity, String bitcoin){
+		return bitcoin.equals(wallet.getCryptoCurency())
+				&& 
+			   quantity<=wallet.getCryptoCurencyCount();
+	}
+	
 	// toString
 
 	@Override
 	public String toString() {
 		StringBuilder sb= new StringBuilder();
-		sb.append(wallet.getBalance()).append(":$");
-		if(!wallet.getCryptoCurency().isBlank()) sb.append(",").append(wallet.getCryptoCurencyCount()).append(":").append(wallet.getCryptoCurency());
+						  appendBalance(sb);
+		if(hasCurrency()) appendCurrencyAndItsCount(sb);
 		return sb.toString();
 	}
+
+	private void appendBalance(StringBuilder sb) {
+		sb.append(wallet.getBalance()).append(":$");
+	}
+
+	private void appendCurrencyAndItsCount(StringBuilder sb) {
+		sb.append(",")
+		.append(wallet.getCryptoCurencyCount())
+		.append(":")
+		.append(wallet.getCryptoCurency());
+	}
+
+	private boolean hasCurrency() {
+		return wallet.getCryptoCurency()!=null;
+	}
+
+	
 
 }
