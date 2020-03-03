@@ -10,5 +10,7 @@ public class CryptocurrencyBank {
     }
 
     public void addSeller(Customer sellerCustomer) {
+
     }
+
 }
