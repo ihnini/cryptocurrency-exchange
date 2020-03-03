@@ -30,4 +30,10 @@ public class CryptoCurrency {
     public void decreaseQuantity(int quantity) {
         this.quantity -= quantity;
     }
+
+    public void calculatePrice(int numberOfBuyers) {
+        if (numberOfBuyers > 1) {
+            this.price = numberOfBuyers * numberOfBuyers - numberOfBuyers;
+        }
+    }
 }

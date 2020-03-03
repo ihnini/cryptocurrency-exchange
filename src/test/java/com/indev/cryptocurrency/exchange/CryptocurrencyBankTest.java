@@ -109,25 +109,25 @@ public class CryptocurrencyBankTest {
      */
     @Test
     public void shouldBuyCryptocurrencyMetcalfeLaw() {
-//        Customer sellerCustomer = new Customer().withCryptocurrency("Bitcoin", 10);
-//
-//        cryptocurrencyBank.addSeller(sellerCustomer);
-//
-//        Customer firstBuyer = new Customer().withBalance(100);
-//        Customer secondBuyer = new Customer().withBalance(100);
-//        Customer thirdBuyer = new Customer().withBalance(100);
-//        int firstBoughtQuantity = cryptocurrencyBank.requestTransaction(firstBuyer, 3, "Bitcoin");
-//        int secondBoughtQuantity = cryptocurrencyBank.requestTransaction(secondBuyer, 3, "Bitcoin");
-//        int thirdBoughtQuantity = cryptocurrencyBank.requestTransaction(thirdBuyer, 3, "Bitcoin");
-//
-//        assertThat(firstBoughtQuantity, equalTo(3));
-//        assertThat(secondBoughtQuantity, equalTo(3));
-//        assertThat(thirdBoughtQuantity, equalTo(3));
-//
-//        assertThat(sellerCustomer.toString(), equalTo("27:$,1:Bitcoin"));
-//
-//        assertThat(firstBuyer.toString(), equalTo("97:$,3:Bitcoin"));
-//        assertThat(secondBuyer.toString(), equalTo("94:$,3:Bitcoin"));
-//        assertThat(thirdBuyer.toString(), equalTo("82:$,3:Bitcoin"));
+        Customer sellerCustomer = new Customer().withCryptocurrency("Bitcoin", 10);
+
+        cryptocurrencyBank.addSeller(sellerCustomer);
+
+        Customer firstBuyer = new Customer().withBalance(100);
+        Customer secondBuyer = new Customer().withBalance(100);
+        Customer thirdBuyer = new Customer().withBalance(100);
+        int firstBoughtQuantity = cryptocurrencyBank.requestTransaction(firstBuyer, 3, "Bitcoin");
+        int secondBoughtQuantity = cryptocurrencyBank.requestTransaction(secondBuyer, 3, "Bitcoin");
+        int thirdBoughtQuantity = cryptocurrencyBank.requestTransaction(thirdBuyer, 3, "Bitcoin");
+
+        assertThat(firstBoughtQuantity, equalTo(3));
+        assertThat(secondBoughtQuantity, equalTo(3));
+        assertThat(thirdBoughtQuantity, equalTo(3));
+
+        assertThat(sellerCustomer.toString(), equalTo("27:$,1:Bitcoin"));
+
+        assertThat(firstBuyer.toString(), equalTo("97:$,3:Bitcoin"));
+        assertThat(secondBuyer.toString(), equalTo("94:$,3:Bitcoin"));
+        assertThat(thirdBuyer.toString(), equalTo("82:$,3:Bitcoin"));
     }
 }

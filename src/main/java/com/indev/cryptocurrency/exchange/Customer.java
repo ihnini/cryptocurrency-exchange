@@ -35,21 +35,22 @@ public class Customer {
         return cryptoCurrency.getType();
     }
 
-    public void buy(String bitcoin,int quantity) {
+    public void buy(String bitcoin, int quantity, int numberOfBuyers) {
         if (isCustmorHasNoCryptoCurrency()){
             this.withCryptocurrency(bitcoin,0);
         }
+        cryptoCurrency.calculatePrice(numberOfBuyers);
         decreaseBalance(quantity);
         increaseCryptoCurrencyQuantity(quantity);
     }
 
-    private boolean isCustmorHasNoCryptoCurrency() {
-        return cryptoCurrency == null;
-    }
-
-    public void sell(int quantity) {
+    public void sell(int quantity,int numberOfBuyers) {
+        cryptoCurrency.calculatePrice(numberOfBuyers);
         increaseBalance(quantity);
         decreaseCryptoCurrencyQuantity(quantity);
+    }
+    private boolean isCustmorHasNoCryptoCurrency() {
+        return cryptoCurrency == null;
     }
 
     private void decreaseCryptoCurrencyQuantity(int quantity) {
@@ -70,6 +71,4 @@ public class Customer {
     private int totalPrice(int quantity) {
         return quantity * cryptoCurrency.getPrice();
     }
-
-
 }

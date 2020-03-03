@@ -6,6 +6,7 @@ import java.util.List;
 public class CryptocurrencyBank {
     private List<String> supportedCryptocurrencies;
     private List<Customer> sellersCustomers;
+    private int numberOfBuyers=0;
 
     public CryptocurrencyBank(){
         this.supportedCryptocurrencies = new ArrayList<>();
@@ -18,12 +19,17 @@ public class CryptocurrencyBank {
 
     public int requestTransaction(Customer buyerCustomer, int quantity, String cryptocurrency) {
         Customer sellerCustomer = getASellerOfACryptocurrency(cryptocurrency);
-        if (sellerCustomer != null) {
-            buyerCustomer.buy(cryptocurrency,quantity);
-            sellerCustomer.sell(quantity);
+        if (cryptoCurrencyHasNoSeller(sellerCustomer)) {
+            numberOfBuyers++;
+            buyerCustomer.buy(cryptocurrency,quantity,numberOfBuyers);
+            sellerCustomer.sell(quantity,numberOfBuyers);
             return quantity;
         }
         return 0;
+    }
+
+    private boolean cryptoCurrencyHasNoSeller(Customer sellerCustomer) {
+        return sellerCustomer != null;
     }
 
     private Customer getASellerOfACryptocurrency(String cryptocurrency) {
