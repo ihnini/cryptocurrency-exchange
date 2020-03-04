@@ -7,17 +7,11 @@ import java.util.Optional;
 import java.util.Set;
 
 public class CryptocurrencyBank {
-	private Set<String> supportedCryptoCurrenciesSet= new HashSet<String>();
-	private Set<Customer> sellerCustomers = new HashSet<Customer>();
-	private int buyersNumber = 0;
-	private Map<String, Integer> currenciesAndNumberOfBuyers = new HashMap<String, Integer>();
-    
-	public CryptocurrencyBank() {
-		currenciesAndNumberOfBuyers.put("Bitcoin",0);
-		currenciesAndNumberOfBuyers.put("Ethereum",0);
-	}
+ 	private Set<Customer> sellerCustomers = new HashSet<Customer>();
+ 	private Map<String, Integer> currenciesAndNumberOfBuyers = new HashMap<String, Integer>();
+   
 	public void addSupportedCryptoCurrency(String bitcoin) {
-    	supportedCryptoCurrenciesSet.add(bitcoin);
+		currenciesAndNumberOfBuyers.put(bitcoin,0);
     }
     
     public int requestTransaction(Customer buyerCustomer, int quantity, String bitcoin) {
