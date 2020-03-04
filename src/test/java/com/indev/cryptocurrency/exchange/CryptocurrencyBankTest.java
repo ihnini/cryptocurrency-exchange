@@ -7,7 +7,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 /*
     A cryptocurrency exchange is a business that allows customers to trade cryptocurrencies.
-
     This simple test demonstrate a cryptocurrency bank that allow customers to sell and buy cryptocurrencies without any fees.
         - The cryptocurrency bank support a list of cryptocurrencies
         - The cryptocurrency bank have a list of customers that are selling The cryptocurrencies
@@ -77,7 +76,7 @@ public class CryptocurrencyBankTest {
 
         Customer buyerCustomer = new Customer().withBalance(100);
         int boughtQuantity = cryptocurrencyBank.requestTransaction(buyerCustomer, 3, "Bitcoin");
-        //assertThat(buyerCustomer.toString(), equalTo("100:$"));
+
         assertThat(boughtQuantity, equalTo(3));
         assertThat(sellerCustomer.toString(), equalTo("3:$,7:Bitcoin"));
         assertThat(buyerCustomer.toString(), equalTo("97:$,3:Bitcoin"));
@@ -124,11 +123,10 @@ public class CryptocurrencyBankTest {
         assertThat(secondBoughtQuantity, equalTo(3));
         assertThat(thirdBoughtQuantity, equalTo(3));
 
-        //Some issues fixed
-        assertThat(sellerCustomer.toString(), equalTo("36:$,1:Bitcoin"));
+        assertThat(sellerCustomer.toString(), equalTo("27:$,1:Bitcoin"));
 
         assertThat(firstBuyer.toString(), equalTo("97:$,3:Bitcoin"));
-        assertThat(secondBuyer.toString(), equalTo("91:$,3:Bitcoin"));
-        assertThat(thirdBuyer.toString(), equalTo("76:$,3:Bitcoin"));
+        assertThat(secondBuyer.toString(), equalTo("94:$,3:Bitcoin"));
+        assertThat(thirdBuyer.toString(), equalTo("82:$,3:Bitcoin"));
     }
 }
