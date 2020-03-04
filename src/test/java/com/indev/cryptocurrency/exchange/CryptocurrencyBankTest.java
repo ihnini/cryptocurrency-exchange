@@ -130,4 +130,35 @@ public class CryptocurrencyBankTest {
         assertThat(secondBuyer.toString(), equalTo("94:$,3:Bitcoin"));
         assertThat(thirdBuyer.toString(), equalTo("82:$,3:Bitcoin"));
     }
+
+    /*
+     * If we have for example 2 seller each having 50 Bitcoins, and we have a buyer that wants to buy
+     * 100 Bitcoin, the sale should pass normally
+     * */
+    @Test
+    public void shouldBuyCryptocurrencyMetcalfeLaw2() {
+        Customer sellerCustomer = new Customer().withCryptocurrency("Bitcoin", 10);
+        Customer sellerCustomer2 = new Customer().withCryptocurrency("Bitcoin", 10);
+
+        cryptocurrencyBank.addSeller(sellerCustomer);
+        cryptocurrencyBank.addSeller(sellerCustomer2);
+
+        Customer firstBuyer = new Customer().withBalance(100);
+        Customer secondBuyer = new Customer().withBalance(100);
+        Customer thirdBuyer = new Customer().withBalance(100);
+        int firstBoughtQuantity = cryptocurrencyBank.requestTransaction(firstBuyer, 4, "Bitcoin");
+        int secondBoughtQuantity = cryptocurrencyBank.requestTransaction(secondBuyer, 7, "Bitcoin");
+        int thirdBoughtQuantity = cryptocurrencyBank.requestTransaction(thirdBuyer, 8, "Bitcoin");
+
+        assertThat(firstBoughtQuantity, equalTo(4));
+        assertThat(secondBoughtQuantity, equalTo(7));
+        assertThat(thirdBoughtQuantity, equalTo(8));
+
+        assertThat(sellerCustomer.toString(), equalTo("16:$"));
+        assertThat(sellerCustomer2.toString(), equalTo("50:$,1:Bitcoin"));
+
+        assertThat(firstBuyer.toString(), equalTo("96:$,4:Bitcoin"));
+        assertThat(secondBuyer.toString(), equalTo("86:$,7:Bitcoin"));
+        assertThat(thirdBuyer.toString(), equalTo("52:$,8:Bitcoin"));
+    }
 }
