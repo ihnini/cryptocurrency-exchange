@@ -7,7 +7,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 /*
     A cryptocurrency exchange is a business that allows customers to trade cryptocurrencies.
-
     This simple test demonstrate a cryptocurrency bank that allow customers to sell and buy cryptocurrencies without any fees.
         - The cryptocurrency bank support a list of cryptocurrencies
         - The cryptocurrency bank have a list of customers that are selling The cryptocurrencies
