@@ -104,8 +104,8 @@ public class CryptocurrencyBankTest {
         The cryptocurrency price is defined according to Metcalfe's Law.
         the price = n^2-n, where n is the number of customers willing to buy the given cryptocurrency.
         When there is only one buyer, for this particular case we will use the price = 1$
-        For example when there are 2 buyers, price = 2^2-1 = 2$
-        For example when there are 3 buyers, price = 3^2-1 = 6$
+        For example when there are 2 buyers, price = 2^2-2 = 2$
+        For example when there are 3 buyers, price = 3^2-3 = 6$
      */
     @Test
     public void shouldBuyCryptocurrencyMetcalfeLaw() {
