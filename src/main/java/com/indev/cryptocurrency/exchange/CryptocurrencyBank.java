@@ -34,15 +34,15 @@ public class CryptocurrencyBank {
     }
 
     public int requestTransaction(Customer buyerCustomer, int cryptoCurrencyAmount, String cryptoCurrency) {
-        if(sellerCustomers.size()==0){
+        if (sellerCustomers.size() == 0 || !(cryptoCurrency.equals(sellerCustomers.get(0).getCryptoCurrency()))) {
             return 0;
         }
-        buyerCustomer.setBalance(buyerCustomer.getBalance()-cryptoCurrencyAmount);
+        buyerCustomer.setBalance(buyerCustomer.getBalance() - cryptoCurrencyAmount);
         buyerCustomer.setCryptoCurrency(cryptoCurrency);
-        buyerCustomer.setCryptoCurrencyAmount(buyerCustomer.getCryptoCurrencyAmount()+cryptoCurrencyAmount);
+        buyerCustomer.setCryptoCurrencyAmount(buyerCustomer.getCryptoCurrencyAmount() + cryptoCurrencyAmount);
         Customer sellerCustomer = sellerCustomers.get(0);
-        sellerCustomer.setCryptoCurrencyAmount(sellerCustomer.getCryptoCurrencyAmount()-cryptoCurrencyAmount);
-        sellerCustomer.setBalance(sellerCustomer.getBalance()+cryptoCurrencyAmount);
+        sellerCustomer.setCryptoCurrencyAmount(sellerCustomer.getCryptoCurrencyAmount() - cryptoCurrencyAmount);
+        sellerCustomer.setBalance(sellerCustomer.getBalance() + cryptoCurrencyAmount);
         return cryptoCurrencyAmount;
     }
 
