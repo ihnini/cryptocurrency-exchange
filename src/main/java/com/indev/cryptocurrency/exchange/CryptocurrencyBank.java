@@ -3,6 +3,8 @@ package com.indev.cryptocurrency.exchange;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.deploy.security.WSeedGenerator;
+
 public class CryptocurrencyBank {
 
     private List<String> supportedCryptoCurrency = new ArrayList<>();
@@ -32,8 +34,16 @@ public class CryptocurrencyBank {
     }
 
     public int requestTransaction(Customer buyerCustomer, int cryptoCurrencyAmount, String cryptoCurrency) {
-
-        return sellerCustomers.size() == 0 ? 0 : cryptoCurrencyAmount;
+        if(sellerCustomers.size()==0){
+            return 0;
+        }
+        buyerCustomer.setBalance(buyerCustomer.getBalance()-cryptoCurrencyAmount);
+        buyerCustomer.setCryptoCurrency(cryptoCurrency);
+        buyerCustomer.setCryptoCurrencyAmount(buyerCustomer.getCryptoCurrencyAmount()+cryptoCurrencyAmount);
+        Customer sellerCustomer = sellerCustomers.get(0);
+        sellerCustomer.setCryptoCurrencyAmount(sellerCustomer.getCryptoCurrencyAmount()-cryptoCurrencyAmount);
+        sellerCustomer.setBalance(sellerCustomer.getBalance()+cryptoCurrencyAmount);
+        return cryptoCurrencyAmount;
     }
 
     public void addSeller(Customer sellerCustomer) {
