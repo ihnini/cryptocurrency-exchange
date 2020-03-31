@@ -48,6 +48,6 @@ public class Customer {
 
     @Override
     public String toString() {
-        return balance + ":$," + cryptoCurrencyAmount + ":" + cryptoCurrency;
+        return cryptoCurrency==null ?balance + ":$" : balance + ":$," + cryptoCurrencyAmount + ":" + cryptoCurrency;
     }
 }

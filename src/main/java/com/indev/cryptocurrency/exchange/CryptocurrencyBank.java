@@ -33,7 +33,7 @@ public class CryptocurrencyBank {
 
     public int requestTransaction(Customer buyerCustomer, int cryptoCurrencyAmount, String cryptoCurrency) {
 
-        return 0;
+        return sellerCustomers.size() == 0 ? 0 : cryptoCurrencyAmount;
     }
 
     public void addSeller(Customer sellerCustomer) {
