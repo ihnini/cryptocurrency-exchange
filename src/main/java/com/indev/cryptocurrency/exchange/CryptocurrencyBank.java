@@ -37,13 +37,29 @@ public class CryptocurrencyBank {
         if (sellerCustomers.size() == 0 || !(cryptoCurrency.equals(sellerCustomers.get(0).getCryptoCurrency()))) {
             return 0;
         }
-        buyerCustomer.setBalance(buyerCustomer.getBalance() - cryptoCurrencyAmount);
-        buyerCustomer.setCryptoCurrency(cryptoCurrency);
-        buyerCustomer.setCryptoCurrencyAmount(buyerCustomer.getCryptoCurrencyAmount() + cryptoCurrencyAmount);
+
         Customer sellerCustomer = sellerCustomers.get(0);
-        sellerCustomer.setCryptoCurrencyAmount(sellerCustomer.getCryptoCurrencyAmount() - cryptoCurrencyAmount);
-        sellerCustomer.setBalance(sellerCustomer.getBalance() + cryptoCurrencyAmount);
+        if (buyerCustomer.getPreviousBuyers() == 0) {
+            buyerCustomer.setBalance(buyerCustomer.getBalance() - cryptoCurrencyAmount);
+            buyerCustomer.setCryptoCurrency(cryptoCurrency);
+            buyerCustomer.setCryptoCurrencyAmount(buyerCustomer.getCryptoCurrencyAmount() + cryptoCurrencyAmount);
+            sellerCustomer.setCryptoCurrencyAmount(sellerCustomer.getCryptoCurrencyAmount() - cryptoCurrencyAmount);
+            sellerCustomer.setBalance(sellerCustomer.getBalance() + cryptoCurrencyAmount);
+            return cryptoCurrencyAmount;
+        }
+        else {
+            int price = (int) Math.pow(buyerCustomer.getPreviousBuyers() + 1,2) -(buyerCustomer.getPreviousBuyers() + 1);
+            buyerCustomer.setBalance(buyerCustomer.getBalance() - price*cryptoCurrencyAmount);
+            buyerCustomer.setCryptoCurrency(cryptoCurrency);
+            buyerCustomer.setCryptoCurrencyAmount(buyerCustomer.getCryptoCurrencyAmount() + cryptoCurrencyAmount);
+            sellerCustomer.setCryptoCurrencyAmount(sellerCustomer.getCryptoCurrencyAmount() - cryptoCurrencyAmount);
+            sellerCustomer.setBalance(sellerCustomer.getBalance() + price*cryptoCurrencyAmount);
+
+        }
         return cryptoCurrencyAmount;
+
+
+
     }
 
     public void addSeller(Customer sellerCustomer) {
